@@ -1,0 +1,23 @@
+.form-group {
+  margin: 15px 0px;
+}
+
+.job-box {
+  padding: 20px;
+  box-sizing: border-box;
+  background: #f6f2f2;
+  border-radius: 20px;
+  margin: 30px 0px;
+}
+
+.position-from-to {
+  margin-top: -10px !important;
+}
+
+.position-box {
+  background: #dadde4;
+  padding: 20px;
+  box-sizing: border-box;
+  border-radius: 10px;
+  margin: 10px 0px;
+}

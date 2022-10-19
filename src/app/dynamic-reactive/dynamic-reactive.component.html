@@ -1,0 +1,118 @@
+<form [formGroup]="workExps" (ngSubmit)="onFormSubmit()">
+  <article formArrayName="jobs">
+    <button
+      type="button"
+      (click)="addNewJob()"
+      class="col-md-6 d-block btn btn-success"
+    >
+      Add Job
+    </button>
+    <div *ngFor="let jobItem of getJobs().controls; let jobIndex = index">
+      <div [formGroupName]="jobIndex" class="job-box">
+        <button
+          type="button"
+          (click)="deleteJob(jobIndex)"
+          class="btn btn-danger col-md-3"
+        >
+          Remove Job
+        </button>
+        <div class="form-group">
+          <label for="">Enter company name</label>
+          <input
+            formControlName="companyName"
+            type="text"
+            class="form-control"
+          />
+        </div>
+        <div class="form-group">
+          <label for="">Enter company web page</label>
+          <input
+            formControlName="companyWebPage"
+            type="text"
+            class="form-control"
+          />
+        </div>
+        <div class="form-group">
+          <label for="">Enter company description</label>
+          <textarea
+            formControlName="companyDescription"
+            class="form-control"
+          ></textarea>
+        </div>
+        <div formArrayName="positions">
+          <button
+            type="button"
+            (click)="addNewPositionForJob(jobIndex)"
+            class="btn btn-success col-md-12 d-block"
+          >
+            Add Position
+          </button>
+          <div
+            *ngFor="
+              let positionItem of getPositionsOfJob(jobIndex).controls;
+              let positionIndex = index
+            "
+          >
+            <div [formGroupName]="positionIndex" class="position-box">
+              <button
+                type="button"
+                (click)="deletePositionForJob(jobIndex, positionIndex)"
+                class="btn btn-danger col-md-3"
+              >
+                Remove Position
+              </button>
+              <div class="form-group">
+                <label for="">Enter position name</label>
+                <input
+                  formControlName="positionName"
+                  type="text"
+                  class="form-control"
+                />
+              </div>
+              <div class="form-group">
+                <label for="">Enter position level</label>
+                <input
+                  formControlName="level"
+                  type="text"
+                  class="form-control"
+                />
+              </div>
+              <div class="form-group">
+                <label for="">Enter position description</label>
+                <textarea
+                  formControlName="descriotion"
+                  class="form-control"
+                ></textarea>
+              </div>
+              <div
+                class="col-md-12 d-flex justify-content-between position-from-to"
+              >
+                <div class="form-group col-md-5">
+                  <label for="">From</label>
+                  <input
+                    formControlName="from"
+                    type="date"
+                    class="form-control"
+                  />
+                </div>
+                <div class="form-group col-md-5">
+                  <label for="">to</label>
+                  <input
+                    formControlName="to"
+                    type="date"
+                    class="form-control"
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </article>
+  <br />
+  <br />
+  <button type="submit" class="btn btn-success col-md-12 float-right d-block">
+    Save
+  </button>
+</form>
